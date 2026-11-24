@@ -1,6 +1,13 @@
 name: SCORPION Auto Update
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'update.py'
+      - '.github/workflows/update.yml'
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
@@ -18,36 +25,72 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
     environment:
       name: github-pages
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: Update NC Character Data
+        id: collect
+        continue-on-error: true
         run: python -u update.py
 
       - name: Save Player Data
+        if: steps.collect.outcome == 'success'
+        continue-on-error: true
         run: |
           git config user.name "SCORPION BOT"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add players.json
-          if ! git diff --cached --quiet; then
+
+          cp players.json /tmp/scorpion-players.json
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/scorpion-players.json players.json
+            git add players.json
+
+            if git diff --cached --quiet; then
+              exit 0
+            fi
+
             git commit -m "Update SCORPION ranking"
-            git push
-          fi
+
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
+            sleep 3
+          done
+
+          exit 1
+
+      - name: Sync Latest Website
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Prepare Website
         run: |
           mkdir -p public
           cp index.html public/
-          cp players.json public/
+
+          if [ -f players.json ]; then
+            cp players.json public/
+          else
+            echo '{"players":[]}' > public/players.json
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -59,3 +102,8 @@ jobs:
 
       - name: Deploy Website
         uses: actions/deploy-pages@v4
+
+      - name: Report Collection Failure
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo "::warning::NC data collection failed. Existing data was retained."
