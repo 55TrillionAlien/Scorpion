@@ -62,4 +62,50 @@ let lo=Math.floor(Math.min(...vals)),hi=Math.ceil(Math.max(...vals));if(hi===lo)
 async function get(file){const r=await fetch('./'+file+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(file+' HTTP '+r.status);return r.json()}
 async function load(){if(busy)return;busy=true;$('reload').disabled=true;try{const [roster,data]=await Promise.all([get('members.json'),get('players.json')]);if(!Array.isArray(roster)||!Array.isArray(data.players))throw Error('데이터 형식 오류');names=roster;history=data.history||{};const map=new Map(data.players.map(p=>[p.name,p]));players=names.map(name=>({name,...map.get(name)}));const success=players.filter(p=>p.status==='success'&&ok(p.power)).length;const show=t=>Number.isFinite(time(t))?new Date(time(t)).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}):'기록 없음';$('status').textContent='최근 정상 데이터 갱신: '+show(data.updatedAt)+' · 최근 조회 '+success+'/'+names.length+'명'+(data.lastAttemptAt?' · 최근 시도 '+show(data.lastAttemptAt):'');$('status').className=success<names.length?'warn':'';render()}catch(e){$('status').textContent='데이터 불러오기 실패: '+e.message+' · 기존 표시 유지';$('status').className='warn'}finally{busy=false;$('reload').disabled=false}}
 $('search').oninput=render;$('sort').onchange=render;$('period').onchange=draw;$('reload').onclick=load;load();setInterval(load,60000);
-</script></body></html>
+</script><style>
+html, body {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+header h1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+.scorpion-header-photo {
+  width: 144px;
+  height: 108px;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  .scorpion-header-photo {
+    width: 100px;
+    height: 75px;
+  }
+}
+</style>
+
+<script>
+const scorpionTitle = document.querySelector("h1");
+
+if (scorpionTitle) {
+  scorpionTitle.textContent = "SCORPION";
+
+  const photo = document.createElement("img");
+  photo.src = "./bg.jpg";
+  photo.className = "scorpion-header-photo";
+  photo.alt = "SCORPION";
+
+  scorpionTitle.appendChild(photo);
+}
+
+const scorpionFooter = document.querySelector("footer");
+
+if (scorpionFooter) {
+  scorpionFooter.textContent = "매시간 30분 갱신 예정";
+}
+</script>
+</body></html>
