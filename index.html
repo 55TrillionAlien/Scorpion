@@ -2,33 +2,81 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SCORPION WEB</title>
 <style>
+* { box-sizing: border-box; }
 body {
   background: #121923;
   color: #f1f5f9;
   font-family: Arial, sans-serif;
+  margin: 0;
   padding: 20px;
 }
-h1 { color: #f5c66b; }
+main { max-width: 1100px; margin: auto; }
+h1 { color: #f5c66b; margin-bottom: 8px; }
+p { color: #a8b9ce; }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+input, select, button {
+  padding: 12px;
+  border: 1px solid #40516a;
+  border-radius: 8px;
+  background: #243247;
+  color: white;
+  font-size: 14px;
+}
+input { flex: 1; min-width: 130px; }
+button {
+  background: #f5c66b;
+  color: #121923;
+  font-weight: bold;
+  cursor: pointer;
+}
 table {
   width: 100%;
   border-collapse: collapse;
+  background: #172231;
 }
 th, td {
-  padding: 14px 8px;
+  padding: 14px 7px;
   border-bottom: 1px solid #334155;
   text-align: center;
 }
 th { background: #243247; }
-td:nth-child(3) { color: #f5c66b; }
+td:nth-child(3) {
+  color: #f5c66b;
+  font-weight: bold;
+}
+a { color: #a5c8fa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+#status { font-size: 13px; color: #a8b9ce; }
+@media(max-width:600px) {
+  body { padding: 10px; }
+  th, td { font-size: 13px; padding: 12px 4px; }
+}
 </style>
 </head>
 <body>
+<main>
 <h1>SCORPION WEB</h1>
-<p>마족 · 루드라 · 스콜피온</p>
-<p>NC 공식 데이터 연동 준비 중</p>
+<p>마족 · 루드라 · 스콜피온 레기온</p>
+<div class="toolbar">
+<input id="search" placeholder="닉네임 / 직업 검색">
+<select id="sort">
+<option value="power">전투력 높은 순</option>
+<option value="powerAsc">전투력 낮은 순</option>
+<option value="item">아이템 레벨 높은 순</option>
+<option value="itemAsc">아이템 레벨 낮은 순</option>
+<option value="name">닉네임 순</option>
+</select>
+<button onclick="loadData()">새로고침</button>
+</div>
+<p id="status">데이터 불러오는 중...</p>
 <table>
 <thead>
 <tr>
@@ -38,13 +86,96 @@ td:nth-child(3) { color: #f5c66b; }
 <th>아이템 레벨</th>
 </tr>
 </thead>
-<tbody>
-<tr><td>뺏뙈지</td><td>-</td><td>1,018</td><td>6,688</td></tr>
-<tr><td>어둠의염화</td><td>검성</td><td>-</td><td>-</td></tr>
-<tr><td>솜주먹허니</td><td>권성</td><td>-</td><td>-</td></tr>
-</tbody>
+<tbody id="rows"></tbody>
 </table>
-<p>테스트 페이지 / 실시간 조회 미연동</p>
+<p>데이터 출처: NC 아이온2 공식 홈페이지 (연동 예정)</p>
+</main>
+<script>
+const names = [
+  "어둠의염화","시크한허니","할만해진",
+  "뺏뙈지","파멸의염화","할만헤진",
+  "보조허니","심판의염화","공허의염화",
+  "짬뙈지","할만해지","솜주먹허니",
+  "심연의염화","뒤통수허니","꽃뙈지",
+  "할만해요"
+];
+let players = names.map(name => ({
+  name, job:null, power:null, itemLevel:null
+}));
+Object.assign(players.find(p=>p.name==="뺏뙈지"),
+  {power:1018000,itemLevel:6688,
+  characterId:"qkievOI_8Q3CkS_kBcpkiCI3QSJ0q3FdY__bx9VZsNE="});
+Object.assign(players.find(p=>p.name==="솜주먹허니"),
+  {job:"권성"});
+function render(){
+  const q = document.getElementById("search").value.trim();
+  const s = document.getElementById("sort").value;
+  const data = players.filter(p =>
+    p.name.includes(q)||(p.job||"").includes(q)
+  );
+  const compare = (a,b,k,asc) => {
+    if(a[k]==null) return b[k]==null?0:1;
+    if(b[k]==null) return -1;
+    return asc?a[k]-b[k]:b[k]-a[k];
+  };
+  data.sort((a,b)=>{
+    if(s==="name") return a.name.localeCompare(b.name,"ko");
+    if(s.startsWith("item"))
+      return compare(a,b,"itemLevel",s==="itemAsc");
+    return compare(a,b,"power",s==="powerAsc");
+  });
+  const rows = document.getElementById("rows");
+  rows.replaceChildren();
+  data.forEach(p=>{
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    if(p.characterId){
+      const a=document.createElement("a");
+      a.textContent=p.name;
+      a.href="https://aion2.plaync.com/ko-kr/characters/2011/"
+        +encodeURIComponent(p.characterId);
+      a.target="_blank";
+      a.rel="noopener noreferrer";
+      td.appendChild(a);
+    }else td.textContent=p.name;
+    tr.appendChild(td);
+    [
+      p.job||"-",
+      p.power==null?"-":Math.floor(p.power/1000).toLocaleString(),
+      p.itemLevel==null?"-":Number(p.itemLevel).toLocaleString()
+    ].forEach(v=>{
+      const cell=document.createElement("td");
+      cell.textContent=v;
+      tr.appendChild(cell);
+    });
+    rows.appendChild(tr);
+  });
+}
+async function loadData(){
+  const status=document.getElementById("status");
+  try {
+    const res=await fetch("./players.json?t="+Date.now(),
+      {cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const data=await res.json();
+    if(!Array.isArray(data.players)) throw new Error("Invalid data");
+    players=names.map(name=>({
+      name,job:null,power:null,itemLevel:null,
+      ...players.find(p=>p.name===name),
+      ...data.players.find(p=>p.name===name)
+    }));
+    status.textContent="마지막 데이터 갱신: "
+      +(data.updatedAt||"미확인");
+  }catch(e){
+    status.textContent="등록 인원 16명 · 공식 데이터 연동 대기 / 기존 값 유지";
+  }
+  render();
+}
+document.getElementById("search").oninput=render;
+document.getElementById("sort").onchange=render;
+render();
+loadData();
+setInterval(loadData,60000);
+</script>
 </body>
 </html>
-
