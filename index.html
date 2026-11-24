@@ -108,4 +108,62 @@ if (scorpionFooter) {
   scorpionFooter.textContent = "매시간 정각 자동 갱신";
 }
 </script>
+  <style>
+header h1 {
+  display: flex !important;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+.scorpion-title-side {
+  width: 120px;
+  height: 90px;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+  border-radius: 8px;
+}
+@media (max-width: 600px) {
+  header h1 {
+    gap: 8px;
+    font-size: 22px;
+  }
+  .scorpion-title-side {
+    width: 64px;
+    height: 48px;
+  }
+}
+</style>
+
+<script>
+(function () {
+  const title = document.querySelector("h1");
+  if (!title) return;
+
+  const photos = Array.from(
+    document.querySelectorAll(
+      "header img, h1 img"
+    )
+  );
+
+  const left = photos[0] || new Image();
+  if (!left.getAttribute("src")) {
+    left.src = "./bg.jpg";
+  }
+
+  const right = photos[1] || left.cloneNode(true);
+
+  photos.forEach(photo => photo.remove());
+
+  left.className = "scorpion-title-side";
+  right.className = "scorpion-title-side";
+
+  title.replaceChildren(
+    left,
+    document.createTextNode("SCORPION"),
+    right
+  );
+})();
+</script>
+
 </body></html>
