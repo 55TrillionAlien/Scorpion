@@ -1,6 +1,7 @@
 {
-  "updatedAt": "2026-11-24 22:00:16 KST",
   "source": "NC AION2",
+  "updatedAt": "2026-11-24T22:04:12+09:00",
+  "lastAttemptAt": "2026-11-24T22:04:12+09:00",
   "successCount": 16,
   "totalCount": 16,
   "players": [
@@ -10,7 +11,7 @@
       "power": 1211543,
       "itemLevel": 6995,
       "characterId": "qkievOI_8Q3CkS_kBcpkiFfvHyghdM8rtmKrbGFWGhw=",
-      "updatedAt": "2026-11-24 21:59:37 KST",
+      "updatedAt": "2026-11-24T22:03:35+09:00",
       "status": "success"
     },
     {
@@ -19,7 +20,7 @@
       "power": 1088349,
       "itemLevel": 6878,
       "characterId": "qkievOI_8Q3CkS_kBcpkiOLTEa8VroGWwz1LvSZwXtk=",
-      "updatedAt": "2026-11-24 21:59:39 KST",
+      "updatedAt": "2026-11-24T22:03:37+09:00",
       "status": "success"
     },
     {
@@ -28,7 +29,7 @@
       "power": 1047552,
       "itemLevel": 6813,
       "characterId": "qkievOI_8Q3CkS_kBcpkiKd2cuC4fFwtmnp5Zy6Mdfo=",
-      "updatedAt": "2026-11-24 21:59:41 KST",
+      "updatedAt": "2026-11-24T22:03:39+09:00",
       "status": "success"
     },
     {
@@ -37,16 +38,16 @@
       "power": 1018299,
       "itemLevel": 6688,
       "characterId": "qkievOI_8Q3CkS_kBcpkiCI3QSJ0q3FdY__bx9VZsNE=",
-      "updatedAt": "2026-11-24 21:59:44 KST",
+      "updatedAt": "2026-11-24T22:03:42+09:00",
       "status": "success"
     },
     {
       "name": "파멸의염화",
       "job": "마도성",
-      "power": 670801,
+      "power": 670822,
       "itemLevel": 5544,
       "characterId": "qkievOI_8Q3CkS_kBcpkiC0IzWOSeV5dfUpwS44FQgI=",
-      "updatedAt": "2026-11-24 21:59:46 KST",
+      "updatedAt": "2026-11-24T22:03:44+09:00",
       "status": "success"
     },
     {
@@ -55,7 +56,7 @@
       "power": 610061,
       "itemLevel": 5566,
       "characterId": "qkievOI_8Q3CkS_kBcpkiE9Jy3O5t27GcS_YaK-2bAw=",
-      "updatedAt": "2026-11-24 21:59:49 KST",
+      "updatedAt": "2026-11-24T22:03:46+09:00",
       "status": "success"
     },
     {
@@ -64,7 +65,7 @@
       "power": 601020,
       "itemLevel": 5360,
       "characterId": "qkievOI_8Q3CkS_kBcpkiMxlfU9TUPxooro7It0z2TU=",
-      "updatedAt": "2026-11-24 21:59:52 KST",
+      "updatedAt": "2026-11-24T22:03:49+09:00",
       "status": "success"
     },
     {
@@ -73,7 +74,7 @@
       "power": 583185,
       "itemLevel": 5222,
       "characterId": "qkievOI_8Q3CkS_kBcpkiFk8Q5CVRCZ-EaFWJWdsMpY=",
-      "updatedAt": "2026-11-24 21:59:54 KST",
+      "updatedAt": "2026-11-24T22:03:51+09:00",
       "status": "success"
     },
     {
@@ -82,7 +83,7 @@
       "power": 580233,
       "itemLevel": 4941,
       "characterId": "qkievOI_8Q3CkS_kBcpkiFViq5XQshmUjzV9zeNJiYw=",
-      "updatedAt": "2026-11-24 21:59:57 KST",
+      "updatedAt": "2026-11-24T22:03:53+09:00",
       "status": "success"
     },
     {
@@ -91,7 +92,7 @@
       "power": 574062,
       "itemLevel": 5375,
       "characterId": "qkievOI_8Q3CkS_kBcpkiJOYmBxMxGLvQ5hQD9T3-dI=",
-      "updatedAt": "2026-11-24 21:59:59 KST",
+      "updatedAt": "2026-11-24T22:03:56+09:00",
       "status": "success"
     },
     {
@@ -100,7 +101,7 @@
       "power": 543725,
       "itemLevel": 5201,
       "characterId": "qkievOI_8Q3CkS_kBcpkiI_QTRBI5XX1SSo9MDXvGy8=",
-      "updatedAt": "2026-11-24 22:00:02 KST",
+      "updatedAt": "2026-11-24T22:03:58+09:00",
       "status": "success"
     },
     {
@@ -109,7 +110,7 @@
       "power": 529407,
       "itemLevel": 4854,
       "characterId": "qkievOI_8Q3CkS_kBcpkiEP93tvgzZkj3k3SyfzdTWc=",
-      "updatedAt": "2026-11-24 22:00:04 KST",
+      "updatedAt": "2026-11-24T22:04:01+09:00",
       "status": "success"
     },
     {
@@ -118,7 +119,7 @@
       "power": 522223,
       "itemLevel": 4943,
       "characterId": "qkievOI_8Q3CkS_kBcpkiKlCRpXHlTzbwzYcPwSUU70=",
-      "updatedAt": "2026-11-24 22:00:06 KST",
+      "updatedAt": "2026-11-24T22:04:03+09:00",
       "status": "success"
     },
     {
@@ -127,7 +128,7 @@
       "power": 364629,
       "itemLevel": 3755,
       "characterId": "qkievOI_8Q3CkS_kBcpkiGJFXOe88l79RB8IcpA51oA=",
-      "updatedAt": "2026-11-24 22:00:09 KST",
+      "updatedAt": "2026-11-24T22:04:05+09:00",
       "status": "success"
     },
     {
@@ -136,7 +137,7 @@
       "power": 280363,
       "itemLevel": 3033,
       "characterId": "qkievOI_8Q3CkS_kBcpkiLK_ppNmjsve2OoVJNWuUHg=",
-      "updatedAt": "2026-11-24 22:00:11 KST",
+      "updatedAt": "2026-11-24T22:04:08+09:00",
       "status": "success"
     },
     {
@@ -145,8 +146,172 @@
       "power": 64721,
       "itemLevel": 813,
       "characterId": "qkievOI_8Q3CkS_kBcpkiGCuk8H0Gyye_QEpWq5BuX0=",
-      "updatedAt": "2026-11-24 22:00:14 KST",
+      "updatedAt": "2026-11-24T22:04:10+09:00",
       "status": "success"
     }
-  ]
+  ],
+  "history": {
+    "어둠의염화": [
+      {
+        "at": "2026-11-24T21:59:37+09:00",
+        "power": 1211543,
+        "itemLevel": 6995
+      },
+      {
+        "at": "2026-11-24T22:03:35+09:00",
+        "power": 1211543,
+        "itemLevel": 6995
+      }
+    ],
+    "시크한허니": [
+      {
+        "at": "2026-11-24T21:59:39+09:00",
+        "power": 1088349,
+        "itemLevel": 6878
+      },
+      {
+        "at": "2026-11-24T22:03:37+09:00",
+        "power": 1088349,
+        "itemLevel": 6878
+      }
+    ],
+    "할만해진": [
+      {
+        "at": "2026-11-24T21:59:41+09:00",
+        "power": 1047552,
+        "itemLevel": 6813
+      },
+      {
+        "at": "2026-11-24T22:03:39+09:00",
+        "power": 1047552,
+        "itemLevel": 6813
+      }
+    ],
+    "뺏뙈지": [
+      {
+        "at": "2026-11-24T21:59:44+09:00",
+        "power": 1018299,
+        "itemLevel": 6688
+      },
+      {
+        "at": "2026-11-24T22:03:42+09:00",
+        "power": 1018299,
+        "itemLevel": 6688
+      }
+    ],
+    "파멸의염화": [
+      {
+        "at": "2026-11-24T21:59:46+09:00",
+        "power": 670801,
+        "itemLevel": 5544
+      },
+      {
+        "at": "2026-11-24T22:03:44+09:00",
+        "power": 670822,
+        "itemLevel": 5544
+      }
+    ],
+    "할만헤진": [
+      {
+        "at": "2026-11-24T21:59:49+09:00",
+        "power": 610061,
+        "itemLevel": 5566
+      },
+      {
+        "at": "2026-11-24T22:03:46+09:00",
+        "power": 610061,
+        "itemLevel": 5566
+      }
+    ],
+    "보조허니": [
+      {
+        "at": "2026-11-24T21:59:52+09:00",
+        "power": 601020,
+        "itemLevel": 5360
+      },
+      {
+        "at": "2026-11-24T22:03:49+09:00",
+        "power": 601020,
+        "itemLevel": 5360
+      }
+    ],
+    "심판의염화": [
+      {
+        "at": "2026-11-24T21:59:54+09:00",
+        "power": 583185,
+        "itemLevel": 5222
+      },
+      {
+        "at": "2026-11-24T22:03:51+09:00",
+        "power": 583185,
+        "itemLevel": 5222
+      }
+    ],
+    "공허의염화": [
+      {
+        "at": "2026-11-24T21:59:57+09:00",
+        "power": 580233,
+        "itemLevel": 4941
+      },
+      {
+        "at": "2026-11-24T22:03:53+09:00",
+        "power": 580233,
+        "itemLevel": 4941
+      }
+    ],
+    "짬뙈지": [
+      {
+        "at": "2026-11-24T21:59:59+09:00",
+        "power": 574062,
+        "itemLevel": 5375
+      },
+      {
+        "at": "2026-11-24T22:03:56+09:00",
+        "power": 574062,
+        "itemLevel": 5375
+      }
+    ],
+    "할만해지": [
+      {
+        "at": "2026-11-24T22:03:58+09:00",
+        "power": 543725,
+        "itemLevel": 5201
+      }
+    ],
+    "솜주먹허니": [
+      {
+        "at": "2026-11-24T22:04:01+09:00",
+        "power": 529407,
+        "itemLevel": 4854
+      }
+    ],
+    "심연의염화": [
+      {
+        "at": "2026-11-24T22:04:03+09:00",
+        "power": 522223,
+        "itemLevel": 4943
+      }
+    ],
+    "뒤통수허니": [
+      {
+        "at": "2026-11-24T22:04:05+09:00",
+        "power": 364629,
+        "itemLevel": 3755
+      }
+    ],
+    "꽃뙈지": [
+      {
+        "at": "2026-11-24T22:04:08+09:00",
+        "power": 280363,
+        "itemLevel": 3033
+      }
+    ],
+    "할만해요": [
+      {
+        "at": "2026-11-24T22:04:10+09:00",
+        "power": 64721,
+        "itemLevel": 813
+      }
+    ]
+  }
 }
