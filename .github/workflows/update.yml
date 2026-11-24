@@ -62,7 +62,7 @@ jobs:
           if [ -f bg.jpg ]; then cp bg.jpg public/; fi
           if [ -f players.json ]; then cp players.json public/; else printf '{"players":[],"history":{}}\n' > public/players.json; fi
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: public
       - name: Deploy Website
